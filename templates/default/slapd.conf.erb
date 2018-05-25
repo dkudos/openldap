@@ -37,12 +37,12 @@ loglevel        <%= node['openldap']['loglevel'] %>
 <% unless node['platform'] == "centos" -%>
 # Where the dynamically loaded modules are stored
 modulepath       <%= node['openldap']['module_dir'] %>
+<% end -%>
 <% node['openldap']['modules'].sort.each do |mod| -%>
 moduleload       <%= mod %>
 <% end -%>
 <% if node['openldap']['slapd_type'] == "provider" -%>
 moduleload       syncprov
-<% end -%>
 <% end -%>
 
 # The tool-threads parameter sets the actual amount of cpu's that is used
